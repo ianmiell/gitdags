@@ -16,4 +16,4 @@ https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
 
 ## Docker Image
 
-`docker pull imiell/gitdags`
+`docker run -ti -v output:/root/output imiell/gitdags`
