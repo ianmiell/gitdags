@@ -14,4 +14,11 @@ WORKDIR tex/latex
 RUN apt install -y git
 RUN git clone https://github.com/Jubobs/xcolor-solarized.git
 RUN kpsewhich xcolor-solarized.sty
-
+WORKDIR /root/texmf/tex/latex
+RUN git clone https://github.com/Jubobs/gitdags.git
+RUN kpsewhich gitdags.sty
+ADD dagfile_example.tex /root/dagfile_example.tex
+WORKDIR /root
+RUN pdflatex dagfile_example.tex
+RUN apt install -y imagemagick
+RUN convert -density 600x600 dagfile_example.pdf -quality 90 -resize 1080x800 dagfile_example.png
