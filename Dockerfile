@@ -22,3 +22,6 @@ WORKDIR /root
 RUN pdflatex dagfile_example.tex
 RUN apt install -y imagemagick
 RUN convert -density 600x600 dagfile_example.pdf -quality 90 -resize 1080x800 dagfile_example.png
+RUN mkdir -p /output
+ADD README.md /output/README.md
+WORKDIR /output
