@@ -8,14 +8,11 @@ RUN echo I | ./install-tl
 ENV PATH /usr/local/texlive/2017/bin/x86_64-linux:$PATH
 RUN latex small2e
 RUN tlmgr info pgf
-RUN kpsewhich -var-value=TEXMFHOME
 WORKDIR cd $(kpsewhich -var-value=TEXMFHOME)
 WORKDIR tex/latex
 RUN git clone https://github.com/Jubobs/xcolor-solarized.git
-RUN kpsewhich xcolor-solarized.sty
 WORKDIR /root/texmf/tex/latex
 RUN git clone https://github.com/Jubobs/gitdags.git
-RUN kpsewhich gitdags.sty
 ADD dagfile_example.tex /root/dagfile_example.tex
 WORKDIR /root
 RUN pdflatex dagfile_example.tex
