@@ -28,3 +28,14 @@ host $ docker cp gitdag:/output/yourdagfile.png .
 
 png is then in output folder co-located with this repo (and .gitignored).
 
+To change the PDF to "fit" the diagram rather than be a full page sheet, change the document class to:
+
+```
+\documentclass[preview]{standalone}
+```
+
+Converting the image from pdf to png using:
+
+```
+convert -density 300 dagfile.pdf -quality 90 dagfile.png
+```
