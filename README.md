@@ -18,15 +18,13 @@ https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
 
 ```
 host $ docker run --rm --name=gitdag -ti imiell/gitdags
-docker $ cd /output
+docker $ cd /files
 docker $ vi yourdagfile.tex
 docker $ pdflatex yourdagfile.tex
 docker $ convert -density 600x600 dagfile_example.pdf -quality 90 -resize 1080x800 yourdagfile.png
 docker $ exit
-host $ docker cp gitdag:/output/yourdagfile.png .
+host $ docker cp gitdag:/files/yourdagfile.png .
 ```
-
-png is then in output folder co-located with this repo (and .gitignored).
 
 To change the PDF to "fit" the diagram rather than be a full page sheet, change the document class to:
 
