@@ -1,8 +1,11 @@
 FROM ubuntu:14.04
-RUN apt-get -y update && apt-get install -y wget
+RUN apt-get -y update && apt-get install -y wget 
 RUN wget mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
 RUN tar xzf install-tl-unx.tar.gz
-WORKDIR install-tl-20180301
+RUN ls
+RUN ln -s install-tl-[0-9]* install-tl
+WORKDIR install-tl
+RUN apt-get install -y binutils-multiarch
 RUN echo I | ./install-tl
 ENV PATH /usr/local/texlive/2017/bin/x86_64-linux:$PATH
 RUN latex small2e
