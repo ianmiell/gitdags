@@ -23,5 +23,4 @@ RUN convert -density 600x600 dagfile_example.pdf -quality 90 -resize 1080x800 da
 ADD README.md /README.md
 ADD HELP.txt /HELP.txt
 ADD convert_files.sh /convert_files.sh
-RUN chmod +x
 CMD ["cat","/HELP.txt"]
