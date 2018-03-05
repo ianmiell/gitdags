@@ -1,0 +1,9 @@
+imiell/gitdags help
+===================
+
+```
+host $ docker run --rm --name=gitdag -ti imiell/gitdags /convert_files.sh
+docker $ ls files
+```
+
+'*.tex' files are read from, and placed in 'files' folder.
