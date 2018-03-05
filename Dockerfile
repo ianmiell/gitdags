@@ -20,9 +20,8 @@ ADD dagfile_example.tex /root/dagfile_example.tex
 WORKDIR /root
 RUN pdflatex dagfile_example.tex
 RUN convert -density 600x600 dagfile_example.pdf -quality 90 -resize 1080x800 dagfile_example.png
-RUN mkdir -p /output
-ADD README.md /output/README.md
+ADD README.md /README.md
 ADD HELP.txt /HELP.txt
 ADD convert_files.sh /convert_files.sh
-WORKDIR /output
+RUN chmod +x
 CMD ["cat","/HELP.txt"]
