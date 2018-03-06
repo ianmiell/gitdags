@@ -17,11 +17,10 @@ https://stackoverflow.com/questions/1057564/pretty-git-branch-graphs
 ## Docker Image
 
 ```
+host $ cd examples
+host $ docker run --rm --name=gitdag -v $(pwd):/files -ti imiell/gitdags /convert_files.sh
 host $ ls files
-a.tex
-host $ docker run --rm --name=gitdag -v $(pwd)/files:/files -ti imiell/gitdags /convert_files.sh
-host $ ls files
-a.tex a.png
+.tex a.png
 ```
 
 ## Notes

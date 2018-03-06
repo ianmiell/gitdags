@@ -1,0 +1,35 @@
+% graph LR
+% 	A(A) -- master branch --> B(B)
+% 	A -- newfeature branch --> C(C <- HEAD)
+\documentclass[preview]{standalone}
+\usepackage{subcaption}
+\usepackage{gitdags}
+\begin{document}
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \begin{tikzpicture}
+      % Commit DAG
+      \gitDAG[grow right sep = 2em]{
+        A -- { 
+          B,
+          C,
+        }
+      };
+      % Branch
+      \gitbranch
+        {newfeature}     % node name and text 
+        {below=of C} % node placement
+        {C}          % target
+      \gitbranch
+        {master}     % node name and text 
+        {above=of B} % node placement
+        {B}          % target
+      % HEAD reference
+      \gitHEAD
+        {above=of master} % node placement
+        {master}          % target
+    \end{tikzpicture}
+  \end{subfigure}
+\end{figure}
+\end{document}

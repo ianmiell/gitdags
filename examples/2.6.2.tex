@@ -1,0 +1,46 @@
+% graph LR
+% 	A1(A1 GOOD) --> A2(A2 ?)
+% 	A2 --> A3(A3 ?)
+% 	A3 -- ... --> A50(A50 ?)
+% 	A50 --> A51(A51 ?)
+% 	A51 -- ... --> A100(A100 BAD)
+\documentclass[preview]{standalone}
+
+\usepackage{subcaption}
+\usepackage{gitdags}
+
+\begin{document}
+
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \begin{tikzpicture}
+      % Commit DAG
+      \gitDAG[grow right sep = 2em]{
+        A1 -- A2 -- A3 -- A50 -- A51 -- A100
+      };
+      \gitbranch
+        {skip 47 commits}     % node name and text
+        {above=of A3} % node placement
+        {A3}          % target
+      \gitbranch
+        {skipped 49 commits}     % node name and text
+        {above=of A100} % node placement
+        {A100}          % target
+      \gitbranch
+        {GOOD}     % node name and text
+        {below=of A1} % node placement
+        {A1}          % target
+      \gitbranch
+        {?}     % node name and text
+        {below=of A50} % node placement
+        {A50}          % target
+      \gitbranch
+        {BAD}     % node name and text
+        {below=of A100} % node placement
+        {A100}          % target
+    \end{tikzpicture}
+  \end{subfigure}
+\end{figure}
+
+\end{document}

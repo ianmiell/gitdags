@@ -1,0 +1,23 @@
+% graph LR
+% 	A --> B
+% 	B --> C
+\documentclass[preview]{standalone}
+
+\usepackage{subcaption}
+\usepackage{gitdags}
+
+\begin{document}
+
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \begin{tikzpicture}
+      % Commit DAG
+      \gitDAG[grow right sep = 2em]{
+        A -- B -- C  
+      };
+    \end{tikzpicture}
+  \end{subfigure}
+\end{figure}
+
+\end{document}

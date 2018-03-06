@@ -1,0 +1,39 @@
+% graph LR
+%    A --> B
+%    B --> C
+%    C -- experimental branch --> E
+%    E --> H
+%    C -- master branch --> F
+%    F --> G(G <- HEAD)
+\documentclass[preview]{standalone}
+\usepackage{subcaption}
+\usepackage{gitdags}
+\begin{document}
+\begin{figure}
+  \begin{subfigure}[b]{\textwidth}
+    \centering
+    \begin{tikzpicture}
+      % Commit DAG
+      \gitDAG[grow right sep = 2em]{
+        A -- B -- C -- { 
+          D -- E -- H,
+          F -- G,
+        }
+      };
+      % Branch
+      \gitbranch
+        {experimental}     % node name and text 
+        {above=of H} % node placement
+        {H}          % target
+      \gitbranch
+        {master}     % node name and text 
+        {below=of G} % node placement
+        {G}          % target
+      % HEAD reference
+      \gitHEAD
+        {below=of master} % node placement
+        {master}          % target
+    \end{tikzpicture}
+  \end{subfigure}
+\end{figure}
+\end{document}
