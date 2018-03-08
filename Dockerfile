@@ -11,8 +11,11 @@ RUN tlmgr info pgf
 WORKDIR cd $(kpsewhich -var-value=TEXMFHOME)
 WORKDIR tex/latex
 RUN git clone https://github.com/Jubobs/xcolor-solarized.git
-WORKDIR /root/texmf/tex/latex
 ADD README.md /README.md
 ADD HELP.txt /HELP.txt
 ADD convert_files.sh /convert_files.sh
+RUN echo 'export PATH=/usr/local/texlive/2017/bin/x86_64-linux:${PATH}' >> /root/.bashrc
+WORKDIR /root/texmf/tex/latex
+RUN git clone https://github.com/Jubobs/gitdags.git
+WORKDIR /root
 CMD ["cat","/HELP.txt"]

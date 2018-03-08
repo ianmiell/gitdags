@@ -7,24 +7,43 @@
     \centering
     \begin{tikzpicture}
       % Commit DAG
-      \gitDAG[grow up sep = 1em]{
-        A -- B -- { 
+      \gitDAG[grow right sep = 1em]{
+        A -- B -- F -- G -- H -- I -- { 
           C,
           D -- E,
         }
       };
       % Tag reference
+% gitdags.sty:\newcommand\SAandWT{%
+% gitdags.sty:\newcommand\toSAorWT[2]{%
+% gitdags.sty:\newcommand\toSAfrom[1]{\toSAorWT{#1}{stagingarea}}
+% gitdags.sty:\newcommand\toWTfrom[1]{\toSAorWT{#1}{workingtree}}
+% gitdags.sty:\newcommand\gitDAG[1][]{\graph[DAG,#1]}
+
+% gitdags.sty:\newcommand\gitblob[2][]
+      \gitblob
+        {gitblob}       % node text
+        {above=of A} % node placement
+        {A}          % target
+% gitdags.sty:\newcommand\gitblobmc[1]{%
+      % For merge conflicts
+      \gitblobmc
+        {above=of C} % node placement
+        {C}          % target
+      \gitSA
+        {above=of G} % node placement
+        {G}          % target
       \gittag
         [v0p1]       % node name
         {v0.1}       % node text
-        {above=of A} % node placement
-        {A}          % target
+        {above=of D} % node placement
+        {D}          % target
       % Remote branch
       \gitremotebranch
         [origmaster]    % node name
         {origin/master} % node text
-        {above=of C}    % node placement
-        {C}             % target
+        {above=of F}    % node placement
+        {F}             % target
       % Branch
       \gitbranch
         {master}     % node name and text 
