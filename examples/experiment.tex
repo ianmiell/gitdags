@@ -21,6 +21,7 @@
 % gitdags.sty:\newcommand\gitDAG[1][]{\graph[DAG,#1]}
 
 % gitdags.sty:\newcommand\gitblob[2][]
+      \toSAandWT
       \gitblob
         {gitblob}       % node text
         {above=of A} % node placement
@@ -30,9 +31,6 @@
       \gitblobmc
         {above=of C} % node placement
         {C}          % target
-      \gitSA
-        {above=of G} % node placement
-        {G}          % target
       \gittag
         [v0p1]       % node name
         {v0.1}       % node text
