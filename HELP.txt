@@ -1,7 +1,8 @@
 imiell/gitdags help
 ===================
 
-host $ docker run --rm --name=gitdag -ti imiell/gitdags /convert_files.sh
+host $ docker run --rm --name=gitdag -v $(pwd):/files -ti imiell/gitdags /convert_files.sh
 docker $ ls files
 
-'*.tex' files are read from, and placed in 'files' folder.
+'*.tex' files are read from, and placed in your local folder as .png's.
+
