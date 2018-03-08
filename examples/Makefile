@@ -8,4 +8,4 @@ OBJ_FILES:=$(patsubst %.tex,%.tex.png,$(TEX_FILES))
 all: $(OBJ_FILES)
 
 clean:
-	rm -f *pdf *log *aux *tex.png
+	rm -f *pdf *log *aux *tex.png *out
